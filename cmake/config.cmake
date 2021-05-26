@@ -255,7 +255,7 @@ set(USE_VTA_FSIM OFF)
 set(USE_VTA_TSIM OFF)
 
 # Whether to build VTA FPGA driver (device side only)
-set(USE_VTA_FPGA OFF)
+set(USE_VTA_FPGA ON)
 
 # Whether use Thrust
 set(USE_THRUST OFF)

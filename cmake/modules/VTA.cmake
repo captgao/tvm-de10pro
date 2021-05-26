@@ -105,6 +105,9 @@ elseif(PYTHON)
     elseif(${VTA_TARGET} STREQUAL "de10nano")  # DE10-Nano rules
       file(GLOB DE10_FPGA_RUNTIME_SRCS ${VTA_HW_PATH}/src/de10nano/*.cc ${VTA_HW_PATH}/src/*.cc)
       list(APPEND FPGA_RUNTIME_SRCS ${DE10_FPGA_RUNTIME_SRCS})
+    elseif(${VTA_TARGET} STREQUAL "de10pro")  # DE10-pro rules
+      file(GLOB DE10_FPGA_RUNTIME_SRCS ${VTA_HW_PATH}/src/de10pro/*.cc ${VTA_HW_PATH}/src/*.cc)
+      list(APPEND FPGA_RUNTIME_SRCS ${DE10_FPGA_RUNTIME_SRCS})
     elseif(${VTA_TARGET} STREQUAL "intelfocl")  # Intel OpenCL for FPGA rules
       file(GLOB FOCL_SRC ${VTA_HW_PATH}/src/oclfpga/*.cc)
       list(APPEND FPGA_RUNTIME_SRCS ${FOCL_SRC})
@@ -128,6 +131,14 @@ elseif(PYTHON)
       target_include_directories(vta SYSTEM PUBLIC 3rdparty)
       target_include_directories(vta SYSTEM PUBLIC
         "/usr/local/intelFPGA_lite/18.1/embedded/ds-5/sw/gcc/arm-linux-gnueabihf/include")
+      set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive")
+    elseif(${VTA_TARGET} STREQUAL "de10pro")  # DE10-Nano rules
+     #target_compile_definitions(vta PUBLIC VTA_MAX_XFER=2097152) # (1<<21)
+      target_include_directories(vta SYSTEM PUBLIC ${VTA_HW_PATH}/src/de10pro)
+      target_include_directories(vta SYSTEM PUBLIC 3rdparty)
+      target_include_directories(vta SYSTEM PUBLIC
+        "/usr/local/intelFPGA_lite/18.1/embedded/ds-5/sw/gcc/arm-linux-gnueabihf/include")
+      set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive")
     elseif(${VTA_TARGET} STREQUAL "intelfocl")  # Intel OpenCL for FPGA rules
       target_include_directories(vta PUBLIC 3rdparty)
       set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")

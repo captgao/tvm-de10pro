@@ -74,6 +74,9 @@ def server_start():
         elif env.TARGET == "de10nano":
             # Load the de10nano program function.
             load_vta_dll()
+        elif env.TARGET == "de10pro":
+            # Load the de10pro program function.
+            load_vta_dll()
         path = tvm.get_global_func("tvm.rpc.server.workpath")(file_name)
         program_bitstream.bitstream_program(env.TARGET, path)
         logging.info("Program FPGA with %s ", file_name)

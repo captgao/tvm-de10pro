@@ -26,7 +26,7 @@ def main():
     parser.add_argument("bitstream", type=str, default="", help="bitstream path")
     args = parser.parse_args()
 
-    if args.target not in ("pynq", "ultra96", "de10nano", "sim", "tsim"):
+    if args.target not in ("pynq", "ultra96", "de10nano", "sim", "tsim", "de10pro"):
         raise RuntimeError("Unknown target {}".format(args.target))
 
     curr_path = os.path.dirname(os.path.abspath(os.path.expanduser(__file__)))

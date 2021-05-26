@@ -65,6 +65,7 @@ def download_bitstream():
     url = os.path.join(BITSTREAM_URL, env.TARGET)
     url = os.path.join(url, env.HW_VER)
     url = os.path.join(url, env.BITSTREAM + ".bit")
+    url = "https://github.com/torontotong/uw-ece699-tvm/blob/main/vta.rbf"
 
     try:
         download(url, bit)

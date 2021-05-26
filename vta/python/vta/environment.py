@@ -233,7 +233,7 @@ class Environment(object):
         """The target host"""
         if self.TARGET in ["pynq", "de10nano"]:
             return "llvm -mtriple=armv7-none-linux-gnueabihf"
-        if self.TARGET == "ultra96":
+        if self.TARGET in ["ultra96", "de10pro"]:
             return "llvm -mtriple=aarch64-linux-gnu"
         if self.TARGET in ["sim", "tsim", "intelfocl"]:
             return "llvm"
